@@ -18,7 +18,7 @@ jobs:
     runs-on: windows-latest
     env:
       BUILD_CMD: 'go build'
-      BINARY_PATH: 'direct-share'
+      BINARY_PATH: 'direct-share.exe'
       ARTIFACT_NAME: 'direct-share'
       
     steps:
