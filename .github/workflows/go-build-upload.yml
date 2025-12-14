@@ -5,7 +5,7 @@ name: Go Build and Upload
 
 on:
   release:
-    types: [released]
+    types: [published]
 
 permissions:
   contents: write
