@@ -13,7 +13,7 @@ permissions:
 
 jobs:
   build-and-upload:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     env:
       BUILD_CMD: 'go build'
       BINARY_PATH: 'direct-share'
@@ -51,11 +51,10 @@ jobs:
 
       - name: Verify binary exists
         run: |
-          BIN_PATH="${{ BINARY_PATH }}"
-          if [ -f "$BIN_PATH" ]; then
+          if [ -f "$BINARY_PATH" ]; then
             echo "Binary exists at $BIN_PATH"
           else
-            echo "ERROR: Binary not found at $BIN_PATH"
+            echo "ERROR: Binary not found at $BINARY_PATH"
             ls -la
             exit 1
           fi
