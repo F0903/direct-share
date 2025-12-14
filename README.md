@@ -2,6 +2,16 @@
 
 A tiny CLI tool for transferring files directly between two peers with a helpful progress bar, ETA, and file integrity verification.
 
+## Installation
+
+To install you can simply download the latest release from the "Releases" page, then copy it to whereever you want. 
+
+Alternatively you can also build the tool yourself.
+
+### Building
+
+Simply run `go build` in the root of the project, and the executable will be built in the same directory.
+
 ## Usage
 
 ### 1. Receive a File (Listener)
