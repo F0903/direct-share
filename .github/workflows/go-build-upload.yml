@@ -4,7 +4,6 @@
 name: Go Build and Upload
 
 on:
-  workflow_dispatch:
   release:
     types: [released]
 
@@ -46,8 +45,8 @@ jobs:
       - name: Build
         run: |
           set -euo pipefail
-          echo "Running build: ${{ BUILD_CMD }}"
-          eval "${{ BUILD_CMD }}"
+          echo "Running build: $BUILD_CMD"
+          eval "$BUILD_CMD"
 
       - name: Verify binary exists
         run: |
@@ -62,8 +61,8 @@ jobs:
       - name: Upload workflow artifact
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ ARTIFACT_NAME }}
-          path: ${{ BINARY_PATH }}
+          name: $ARTIFACT_NAME
+          path: $BINARY_PATH
 
       - name: Find draft release (if any)
         id: find_draft
@@ -91,8 +90,8 @@ jobs:
         uses: actions/upload-release-asset@v1
         with:
           upload_url: ${{ steps.find_draft.outputs.upload_url }}
-          asset_path: ${{ BINARY_PATH }}
-          asset_name: ${{ ARTIFACT_NAME }}
+          asset_path: $BINARY_PATH
+          asset_name: $ARTIFACT_NAME
           asset_content_type: application/octet-stream
 
       - name: Done
