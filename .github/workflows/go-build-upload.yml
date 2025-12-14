@@ -49,14 +49,14 @@ jobs:
       - name: Upload workflow artifact
         uses: actions/upload-artifact@v6
         with:
-          name: "$ARTIFACT_NAME"
-          path: "$BINARY_PATH"
+          name: ${{ env.ARTIFACT_NAME }}
+          path: ${{ env.BINARY_PATH }}
 
       - name: Release
         uses: softprops/action-gh-release@v2
         if: github.ref_type == 'tag'
         with:
-          files: "$BINARY_PATH"
+          files: ${{ env.BINARY_PATH }}
 
       - name: Done
         run: echo "Go build and upload complete."
