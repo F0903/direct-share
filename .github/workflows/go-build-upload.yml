@@ -3,9 +3,13 @@
 
 name: Go Build and Upload
 
+defaults:
+  run:
+    shell: bash
+
 on:
   release:
-    types: [created]
+    types: [published]
 
 permissions:
   contents: write
@@ -51,7 +55,7 @@ jobs:
       - name: Verify binary exists
         run: |
           if [ -f "$BINARY_PATH" ]; then
-            echo "Binary exists at $BIN_PATH"
+            echo "Binary exists at $BINARY_PATH"
           else
             echo "ERROR: Binary not found at $BINARY_PATH"
             ls -la
